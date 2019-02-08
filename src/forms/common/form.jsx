@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import Joi from 'joi-browser';
 
-import './form.css';
+import './styles/form.css';
 import Input from './input';
 
 class Form extends Component {
@@ -75,7 +75,7 @@ class Form extends Component {
     const inputs = this.inputs;
     return (
       <form
-        className={this.config.formClasses}
+        className={`form ${this.config.formClasses || null}`}
         onSubmit={this.handleSubmit}>
         {_.keysIn(data).map(name => {
           const input = inputs[name];
@@ -95,7 +95,7 @@ class Form extends Component {
         <button 
           disabled={this.validate()}
           className="btn btn-primary">
-          {this.config['buttonLabel']}
+          {this.config.buttonLabel}
         </button>
       </form>
     );

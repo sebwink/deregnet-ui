@@ -25,7 +25,6 @@ class LoginForm extends Form {
 
   config = {
     buttonLabel: 'Login',
-    formClasses: 'centered-form',
   }
 
   schema = {

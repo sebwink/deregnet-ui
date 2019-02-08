@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Joi from 'joi-browser';
 
-import Form from './common/form';
-import { postSignup, getSignupConfirm, postSignupConfirm } from '../backend/auth.js';
-import LoginForm from './login.jsx';
+import Form from '../forms/common/form';
+import { postSignup, getSignupConfirm, postSignupConfirm } from '../backend/auth';
+import LoginForm from '../forms/loginForm';
 
-class SignupForm extends Form {
+export class SignupForm extends Form {
   state = {
     data: {
       username: '',
@@ -37,7 +37,6 @@ class SignupForm extends Form {
 
   config = {
     buttonLabel: 'Sign up',
-    formClasses: 'centered-form',
   }
 
   schema = {
@@ -72,13 +71,13 @@ class SignupForm extends Form {
   }
 }
 
-const ConfirmationMailSend = (props) => {
+export const ConfirmationMailSend = (props) => {
   return (
     <p>Thank you. You should have received an E-Mail to confirm and activate your account.</p>
   );
 };
 
-class ConfirmationLink extends Component {
+export class ConfirmationLink extends Component {
   state = {
     validToken: undefined, 
   }
@@ -105,15 +104,13 @@ class ConfirmationLink extends Component {
   }
 }
 
-class ConfirmationLogin extends LoginForm {
+export class ConfirmationLogin extends LoginForm {
   async submit() {
     const { token } = this.props.location.state;
     const { username, password } = this.state.data;
     const confirmed = await postSignupConfirm(username, password, token);
     if (confirmed) {
-      console.log('Before');
       super.submit();
-      console.log('After');
     } else {
       const errors = {...this.state.errors};
       const message = 'Invalid confirmation token, username or password provided.';
