@@ -35,7 +35,6 @@ class LoginForm extends Form {
   async submit() {
     const { username, password } = this.state.data;
     const accessToken = await getAccessToken(username, password);
-    console.log(accessToken);
     if (accessToken) {
       window.localStorage.setItem('accessToken', accessToken);
       window.location = '/';

@@ -1,13 +1,13 @@
 import React from 'react';
 import Grid from '../utils/grid';
-import { SignupForm } from '../components/signup';
-
-import './styles/registerPage.css';
+import RegisterForm from '../forms/registerForm';
 
 class RegisterPage extends Grid {
+  columns = '6fr 5fr 6fr';
+  rows = '1fr 3fr 1fr';
   components = [
     null, null, null,
-    null, <SignupForm />, null,
+    null, <RegisterForm history={this.props.history} />, null,
     null, null, null,
   ];
 }
