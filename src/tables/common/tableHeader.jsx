@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import './styles/tableHeader.css';
 
 class TableHeader extends Component {
   raiseSort = (path) => {
@@ -21,19 +22,19 @@ class TableHeader extends Component {
   };
 
   render() {
-		const { columns } = this.props;
+		const { columns, sortColumn } = this.props;
 		return (
-    	<thead className="thead-dark">
+    	<thead className="table-header">
       	<tr>
 					{
-						columns.map( (column) => (
+            columns.map( (column) => (
               <th 
                 className={column.sortable ? "clickable" : ""}
                 key={column.key ? column.key : column.name}
 								onClick={column.sortable ? () => this.raiseSort(column.path) : () => undefined}
                 scope="col"
               >
-                {column.name ? column.name : ''} {this.renderSortIcon(column)}
+                {column.name ? column.name : ''} {sortColumn ? this.renderSortIcon(column) : ''}
               </th>
 						))
 					}
@@ -42,6 +43,5 @@ class TableHeader extends Component {
 		);
  	}
 }
-
 
 export default TableHeader;

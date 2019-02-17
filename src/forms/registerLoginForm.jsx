@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { postSignupConfirm } from '../backend/auth';
 import LoginForm from '../forms/loginForm';
 

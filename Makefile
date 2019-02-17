@@ -4,8 +4,8 @@ kong-setup:
 deregnet-ui:
 	docker-compose -f docker/compose/deregnet.ui.base.yml build deregnet-ui
 
-dev:
+up:
 	docker-compose -f docker/compose/deregnet.ui.base.yml up 
 
-dev-down:
+down:
 	docker-compose -f docker/compose/deregnet.ui.base.yml down 

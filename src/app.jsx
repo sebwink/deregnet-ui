@@ -11,6 +11,7 @@ import RegisterPage from './pages/registerPage';
 import ConfirmationMail from './utils/confirmationMail';
 import ConfirmationLink from './utils/confirmationLink';
 import RegisterLoginPage from './pages/registerLoginPage';
+import ScoresPage from './pages/scoresPage';
 
 class App extends Component {
   state = {}
@@ -34,6 +35,7 @@ class App extends Component {
           <Route path="/ui/signup/confirmation/login" exact component={RegisterLoginPage} />
           <Route path="/ui/signup/confirmation/:token" exact component={ConfirmationLink} />
           <Route path="/login" exact component={LoginPage} />
+          <Route path="/scores" exact component={ScoresPage} />
           <Route path="/home" exact component={HomePage} />
           <Redirect from="/" to="/home" />
           <Redirect to="/home" />
