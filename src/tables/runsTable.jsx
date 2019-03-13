@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table';
-import scores from '../backend/deregnet/scores';
+import runs from '../backend/deregnet/runs';
 
-class ScoresTable extends Component {
+class RunsTable extends Component {
   columns = [
     { Header: 'Id', accessor: 'id' },
     { Header: 'Description', accessor: 'description' },
-    { Header: 'Size', accessor: 'size' },
-    { Header: 'Uploaded', accessor: 'time_of_upload' },
+    { Header: 'Posted', accessor: 'post_time' },
+    { Header: 'Started', accessor: 'started' },
+    { Header: 'Done', accessor: 'done' },
   ]
 
   state = {
@@ -15,7 +16,7 @@ class ScoresTable extends Component {
   }
 
   async componentDidMount() {
-    const data = await scores.get();
+    const data = await runs.get();
     this.setState({ data });
   }
 
@@ -26,11 +27,11 @@ class ScoresTable extends Component {
         columns={this.columns}
         defaultPageSize={15}
         pageSizeOptions={[5, 10, 15]}
-        noDataText="You do not have any scores."
-        rowsText="scores"
+        noDataText="You do not have any runs."
+        rowsText="runs"
       />
     );
   }
 }
 
-export default ScoresTable;
+export default RunsTable;

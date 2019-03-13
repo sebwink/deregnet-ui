@@ -26,8 +26,6 @@ class ScoresTable extends Component {
         columns={this.columns}
         defaultPageSize={15}
         pageSizeOptions={[5, 10, 15]}
-        noDataText="You do not have any scores."
-        rowsText="scores"
       />
     );
   }

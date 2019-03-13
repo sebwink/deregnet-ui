@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table';
-import scores from '../backend/deregnet/scores';
+import networks from '../backend/deregnet/graphs';
 
-class ScoresTable extends Component {
+class NetworksTable extends Component {
   columns = [
     { Header: 'Id', accessor: 'id' },
+    { Header: 'Name', accessor: 'name' },
     { Header: 'Description', accessor: 'description' },
-    { Header: 'Size', accessor: 'size' },
+    { Header: '# nodes', accessor: 'num_nodes' },
+    { Header: '# edges', accessor: 'num_edges' },
     { Header: 'Uploaded', accessor: 'time_of_upload' },
   ]
 
@@ -15,7 +17,7 @@ class ScoresTable extends Component {
   }
 
   async componentDidMount() {
-    const data = await scores.get();
+    const data = await networks.get();
     this.setState({ data });
   }
 
@@ -26,11 +28,11 @@ class ScoresTable extends Component {
         columns={this.columns}
         defaultPageSize={15}
         pageSizeOptions={[5, 10, 15]}
-        noDataText="You do not have any scores."
-        rowsText="scores"
+        noDataText="You do not have any networks."
+        rowsText="networks"
       />
     );
   }
 }
 
-export default ScoresTable;
+export default NetworksTable;

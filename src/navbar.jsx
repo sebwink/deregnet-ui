@@ -48,22 +48,12 @@ class Navbar extends Component {
         </NavLink>
         <NavLink
      	    className="nav-item nav-link"
-     	    to="/runs" 
-     	 	>
-          <button 
-            className="nav-item btn btn-primary"
-          >
-            Runs
-          </button>
-				</NavLink>
-        <NavLink
-     	    className="nav-item nav-link"
      	    to="/subgraphs" 
      	 	>
           <button 
             className="nav-item btn btn-primary"
           >
-            Subgraphs
+            Your subgraphs
           </button>
         </NavLink>
         <div className="dropdown">
@@ -82,7 +72,7 @@ class Navbar extends Component {
           >
             <NavLink
      	        className="nav-item nav-link"
-     	        to="/graphs" 
+     	        to="/networks" 
      	 	    >
      	        Networks
             </NavLink>
@@ -103,6 +93,12 @@ class Navbar extends Component {
      	        to="/parameter_sets" 
      	 	    >
      	        Parameter sets
+            </NavLink>
+            <NavLink
+     	        className="nav-item nav-link"
+     	        to="/runs" 
+     	 	    >
+     	        Runs
             </NavLink>
           </div>
         </div>
