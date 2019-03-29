@@ -1,6 +1,17 @@
-FROM node:11
+FROM node:10-slim
 
-RUN mkdir /app
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && mkdir /app
+
 WORKDIR /app
+
+COPY src src 
+COPY public public 
+COPY package.json .
+COPY config config 
+COPY scripts scripts
+
+RUN npm install && npm audit fix
 
 CMD ["npm", "start"]
