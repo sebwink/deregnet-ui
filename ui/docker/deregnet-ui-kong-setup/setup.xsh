@@ -25,10 +25,12 @@ def registerDeregnetUiServiceRoute():
     return $(
         curl --silent -X POST \
              --url http://kong:8001/services/deregnet-ui/routes \
-             --data 'methods[]=GET' \
+             --data 'name=deregnet-ui' \
+			 --data 'methods[]=GET' \
              --data 'methods[]=POST' \
              --data 'methods[]=DELETE' \
-             --data 'methods[]=PUT'
+             --data 'methods[]=PUT' \
+			 --data 'paths[]=/ui'
     )
 
 if __name__ == '__main__':

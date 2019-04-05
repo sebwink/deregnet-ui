@@ -1,0 +1,6 @@
+version: '3'
+services:
+  deregnet-ui-api-kong-teardown:
+    image: sebwink/deregnet-ui-api-kong-teardown
+    build:
+      context: ../deregnet-ui-api-kong-teardown 

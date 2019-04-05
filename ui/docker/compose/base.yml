@@ -1,0 +1,7 @@
+version: "3"
+services:
+  deregnet-ui:
+    image: sebwink/deregnet-ui 
+    environment:
+      PUBLIC_URL: /ui
+      PORT: 8080

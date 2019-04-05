@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import routes from './routes';
+import { AUTH_PATH } from './config';
 import search from './utils/search';
-import logout from './utils/logout';
 
 import './styles/navbar.css';
 
@@ -14,18 +15,20 @@ class Navbar extends Component {
     }
     return (
       <React.Fragment>
-        <NavLink
-     	    className="nav-item nav-link"
-     	    to="/login" 
-     	 	>
-     	    Login
-				</NavLink>
-     	 	<NavLink
-     	    className="nav-item nav-link"
-          to="/ui/signup" 
-     	 	>
-     	    Register
-				</NavLink>
+        <a 
+          href={`https://${window.location.hostname}${AUTH_PATH}/login`}
+          className="btn btn-primary m-2"
+          role="button"
+        >
+          Login
+        </a>
+        <a 
+          href={`https://${window.location.hostname}${AUTH_PATH}/register`}
+          className="btn btn-primary m-2"
+          role="button"
+        >
+          Register
+        </a>
       </React.Fragment>
     );
   }
@@ -48,7 +51,7 @@ class Navbar extends Component {
         </NavLink>
         <NavLink
      	    className="nav-item nav-link"
-     	    to="/subgraphs" 
+     	    to={routes.subgraphsPage} 
      	 	>
           <button 
             className="nav-item btn btn-primary"
@@ -72,31 +75,31 @@ class Navbar extends Component {
           >
             <NavLink
      	        className="nav-item nav-link"
-     	        to="/networks" 
+     	        to={routes.networksPage} 
      	 	    >
      	        Networks
             </NavLink>
             <NavLink
      	        className="nav-item nav-link"
-     	        to="/scores" 
+     	        to={routes.scoresPage} 
      	 	    >
      	        Scores
             </NavLink>
             <NavLink
      	        className="nav-item nav-link"
-     	        to="/node_sets" 
+     	        to={routes.nodeSetsPage} 
      	 	    >
      	        Node sets
             </NavLink>
             <NavLink
      	        className="nav-item nav-link"
-     	        to="/parameter_sets" 
+     	        to={routes.parameterSetsPage} 
      	 	    >
      	        Parameter sets
             </NavLink>
             <NavLink
      	        className="nav-item nav-link"
-     	        to="/runs" 
+     	        to={routes.runsPage} 
      	 	    >
      	        Runs
             </NavLink>
@@ -106,12 +109,13 @@ class Navbar extends Component {
           <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
           <button className="btn btn-primary my-2 my-sm-0" onClick={search}>Search</button>
         </form>
-        <button
+        <a 
+          href={`https://${window.location.hostname}${AUTH_PATH}/logout`}
           className="btn btn-warning"
-          onClick={logout}
-     	  >
-     	    Log out
-        </button>
+          role="button"
+        >
+          Log out 
+        </a>
       </React.Fragment>
     );
   }
@@ -122,7 +126,7 @@ class Navbar extends Component {
       <nav className="navbar navbar-default navbar-expand-lg navbar-light">
         <NavLink 
           className="nav-item nav-link"
-          to="/"
+          to={routes.homePage}
         >
           <button 
             className="navbar-brand btn btn-link"

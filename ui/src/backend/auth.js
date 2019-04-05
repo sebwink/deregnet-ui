@@ -1,65 +1,17 @@
 const axios = require('axios');
 
-const deregnetRestRoot = process.env.DEREGNET_ROOT || 'https://dereg.net';
+const AUTH_API_ROOT = process.env.AUTH_API_ROOT || `https://${window.location.hostname}/auth/api`;
 
-export const postSignup = ({ username, password, email }) => (
-  new Promise(async (resolve, reject) => {
-    const url = `${deregnetRestRoot}/signup`;
-    try {
-      const response = await axios.post(url, {
-        username,
-        password,
-        email,
-        ui: true,
-      });
-      resolve(response);
-    } catch (error) {
-      if (error.response) {
-        resolve(error.response);
-      } else {
-        reject(error);
-      }
-    }
-  })
-);
-
-export const getSignupConfirm = token => (
+export const getLogin = () => (
   new Promise(async (resolve) => {
     try {
-      await axios.get(`${deregnetRestRoot}/signup/confirm?token=${token}`);
-      resolve(true);
-    } catch (error) {
-      resolve(false);
-    }
-  })
-);
-
-export const postSignupConfirm = (username, password, token) => (
-  new Promise(async (resolve) => {
-    try {
-      await axios.post(`${deregnetRestRoot}/signup/confirm?token=${token}`, {
-        username,
-        password,
-      });
-      resolve(true);
-    } catch (error) {
-      console.log(error);
-      resolve(false);
-    }
-  })
-);
-
-export const getAccessToken = (username, password) => (
-  new Promise(async (resolve) => {
-    try {
-      const response = await axios.get(`${deregnetRestRoot}/access/token`, {
-        auth: {
-          username,
-          password,
+      const token = localStorage.getItem('accessToken');
+      await axios.get(`${AUTH_API_ROOT}/login`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
       });
-      const { accessToken } = response.data;
-      resolve(accessToken);
+      resolve(true);
     } catch (error) {
       resolve(null);
     }
@@ -67,8 +19,5 @@ export const getAccessToken = (username, password) => (
 );
 
 export default {
-  postSignup,
-  getSignupConfirm,
-  postSignupConfirm,
-  getAccessToken,
+  getLogin,
 };

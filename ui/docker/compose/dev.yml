@@ -1,0 +1,11 @@
+version: "3"
+services:
+  deregnet-ui:
+    build:
+      context: ../..
+      dockerfile: ./docker/dev/Dockerfile
+    volumes:
+      - '../../src:/app/src'
+      - '../../public:/app/public'
+      - '../../config:/app/config'
+      - '../../scripts:/app/scripts'

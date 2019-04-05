@@ -1,0 +1,6 @@
+version: "3"
+services:
+  deregnet-ui-api-kong-setup:
+    image: sebwink/deregnet-ui-api-kong-setup
+    build:
+      context: ../deregnet-ui-api-kong-setup
